@@ -16,54 +16,14 @@ The `SectionRenderingSdk` class provides utility methods for working with [Shopi
 
 ## Installation
 
-This is a standalone SDK. Just include the class in your JavaScript bundle or as a module in your project:
+Download the SDK file here:
 
-```js
-class SectionRenderingSdk {
-    getSection(sectionId){
-        return new Promise((resolve, reject) => {
-            fetch(`/?section_id=${sectionId}`)
-                .then((response) => {
-                    if (!response.ok) {
-                        reject(`HTTP error! Status: ${response.status}`);
-                    }
-                    response.text().then((text) => {
-                        resolve(new DOMParser().parseFromString(text, 'text/html'));
-                    });
-                });
-        });
-    }
+👉 [Download section-rendering-sdk.js](section-rendering-sdk.js)
 
-    getSections(sectionIds){
-        return new Promise((resolve, reject) => {
-            fetch(`/?sections=${sectionIds}`)
-                .then((response) => {
-                    if (!response.ok) {
-                        reject(`HTTP error! Status: ${response.status}`);
-                    }
-                    response.text().then((text) => {
-                        resolve(JSON.parse(text));
-                    });
-        });
-    }
+Then include the downloaded file in your Shopify theme. Add the following line inside your `theme.liquid` layout file, **before** including your main `global.js` or other scripts:
 
-    async renderElement(sectionId, elements = []) {
-        try {
-            const section = await this.getSection(sectionId);
-            if (section) {
-                elements.forEach(element => {
-                    const rendered_element = section.querySelector(element);
-                    const current_element = document.querySelector(element);
-                    if (rendered_element && current_element) {
-                        current_element.replaceWith(rendered_element);
-                    }
-                });
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    }
-}
+```liquid
+<script src="{{ 'section-rendering-sdk.js' | asset_url }}" defer="defer"></script>
 ```
 
 ---
@@ -109,7 +69,7 @@ Fetches multiple sections using the `sections` query parameter and returns a pla
 
 #### Parameters
 
-- `sectionIds` (`string`): Comma-separated list of section IDs (e.g., `"benefits-blocks,main-product"`).
+- `sectionIds` (`string`): Comma-separated list of section IDs (e.g., `"cart,main-product"`).
 
 #### Returns
 
@@ -118,8 +78,8 @@ Fetches multiple sections using the `sections` query parameter and returns a pla
 #### Example
 
 ```js
-sectionRenderingSdk.getSections("benefits-blocks,main-product").then((response) => {
-    console.log(response['benefits-blocks']); // raw HTML string of the benefits-blocks section
+sectionRenderingSdk.getSections("cart,main-product").then((response) => {
+    console.log(response['cart']); // raw HTML string of the cart section
 });
 ```
 
@@ -144,12 +104,10 @@ Fetches a section, then finds and replaces the specified DOM elements with their
 const loading = document.querySelector(".loading-indicator");
 
 sectionRenderingSdk.renderElement(loading.dataset.section, [
-    ".ts-cart__free",
-    ".drawer__footer",
-    ".footer-js-content"
+    ".cart-totals",
+    ".cart-items"
 ]).then(() => {
-    if (loading) loading.classList.remove("loading");
-    listenCartChange(); // Re-initialize any cart listeners
+    // do whatever want to done after elements render
 });
 ```
 
@@ -166,7 +124,7 @@ sectionRenderingSdk.renderElement("cart-section", [
     ".cart-totals",
     ".cart-items"
 ]).then(() => {
-    updateUI();
+    // do whatever want to done after elements render
 });
 ```
 

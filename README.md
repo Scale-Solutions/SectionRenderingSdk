@@ -1,4 +1,4 @@
-![20250619_1825_Section Rendering Banner_simple_compose_01jy4433e5e2zr7x263585qd6s](https://github.com/user-attachments/assets/ccb27b73-4fdc-47f9-b0c2-a11a5d4408dc)
+![Untitled design (1)](https://github.com/user-attachments/assets/d2013982-7878-4513-af11-d043e45fa437)
 
 
 

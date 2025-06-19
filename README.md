@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/d40511ac-7097-408c-8741-4e2506c829bf)
+![20250619_1825_Section Rendering Banner_simple_compose_01jy4433e5e2zr7x263585qd6s](https://github.com/user-attachments/assets/ccb27b73-4fdc-47f9-b0c2-a11a5d4408dc)
+
 
 
 # SectionRenderingSdk Documentation

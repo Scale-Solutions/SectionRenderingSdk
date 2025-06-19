@@ -1,3 +1,5 @@
+![20250619_1825_Section Rendering Banner_simple_compose_01jy4433e5e2zr7x263585qd6s](https://github.com/user-attachments/assets/b63bb98a-3cb1-43c1-88b4-65848b0cf399)
+
 # SectionRenderingSdk Documentation
 
 The `SectionRenderingSdk` class provides utility methods for working with [Shopify Section Rendering API](https://shopify.dev/docs/api/section-rendering) in a JavaScript-based front-end. It allows you to fetch and dynamically render individual or multiple Shopify sections.

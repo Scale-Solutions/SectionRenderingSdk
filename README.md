@@ -107,9 +107,8 @@ Fetches a section, then finds and replaces the specified DOM elements with their
 #### Example
 
 ```js
-const loading = document.querySelector(".loading-indicator");
-
-sectionRenderingSdk.renderElement(loading.dataset.section, [
+let sectionId = "cart";
+sectionRenderingSdk.renderElement(sectionId, [
     ".cart-totals",
     ".cart-items"
 ]).then(() => {

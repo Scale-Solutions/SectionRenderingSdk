@@ -12,9 +12,9 @@ class SectionRenderingSdk {
      * @param {string} sectionId - The section ID to fetch from the server.
      * @returns {Promise<Document>} - Parsed DOM document of the section.
      */
-    getSection(sectionId){
+    getSection(sectionId, url="/"){
         return new Promise((resolve, reject) => {
-            fetch(`/?section_id=${sectionId}`)
+            fetch(`${url}?section_id=${sectionId}`)
                 .then((response) => {
                     if (!response.ok) {
                         reject(`HTTP error! Status: ${response.status}`);
@@ -53,9 +53,9 @@ class SectionRenderingSdk {
      * @param {Array<string>} elements - Array of CSS selectors for the elements to update.
      * @returns {Promise<void>}
      */
-    async renderElement(sectionId, elements = []) {
+    async renderElement(sectionId, elements = [], url="/") {
         try {
-            const section = await this.getSection(sectionId);
+            const section = await this.getSection(sectionId, url);
             if (section) {
                 elements.forEach(element => {
                     const rendered_element = section.querySelector(element);
